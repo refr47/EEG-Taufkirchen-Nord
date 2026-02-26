@@ -17,7 +17,7 @@
             <span class="text-5xl font-black text-slate-800">{{ tarif.preis }}</span>
             <span class="ml-1 text-slate-500 font-bold">Cent/kWh</span>
           </div>
-          <p class="text-xs text-slate-400 mt-2 italic">* exkl. MwSt. & Netzentgelte</p>
+          <p class="text-xs text-slate-400 mt-2 italic">* exkl. Netzentgelte</p>
         </div>
         
         <div class="p-8">
@@ -60,17 +60,16 @@ export default {
       tarife: [
         {
           name: "Bezugstarif",
-          preis: "12,50",
+          preis: "9,50",
           details: [
             "Günstiger <b>Regionalstrom</b>",
             "Keine versteckten Gebühren",
             "Reduzierte Netzentgelte",
-            "Grundgebühr: 2,00 € / Monat"
           ]
         },
         {
           name: "Einspeisetarif",
-          preis: "8,00",
+          preis: "9,00",
           details: [
             "Faire Vergütung für Überschuss",
             "Direkte Abrechnung",
