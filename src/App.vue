@@ -98,7 +98,7 @@
                         <div class="flex flex-col space-y-4 pt-2">
                             <div class="flex justify-between items-center px-2">
                                 <span class="text-[10px] text-slate-400 uppercase tracking-widest">Mitglieder</span>
-                                <span class="text-eeg-green font-black">142</span>
+                                <span class="text-eeg-green font-black">1</span>
                             </div>
     
                             <button @click="showMap = !showMap; closeMenu()" class="w-full bg-slate-100 text-slate-700 py-3 rounded-xl text-sm font-bold active:bg-slate-200">
