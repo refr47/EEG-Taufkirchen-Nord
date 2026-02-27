@@ -14,9 +14,9 @@
         <h2 class="text-red-600"> </h2><br>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div @click="toggleStep('portal')" :class="[
-                                                                      'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
-                                                                      activeStep === 'portal' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
-                                                                    ]">
+                                                                          'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
+                                                                          activeStep === 'portal' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
+                                                                        ]">
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-3xl">🌐</span>
                     <span v-if="activeStep === 'portal'" class="text-eeg-green">●</span>
@@ -25,9 +25,9 @@
                 <p class="text-xs text-slate-500 mt-2">Registrierung bei Netz OÖ</p>
             </div>
             <div @click="toggleStep('beitritt')" :class="[
-                                                                      'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
-                                                                      activeStep === 'beitritt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
-                                                                    ]">
+                                                                          'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
+                                                                          activeStep === 'beitritt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
+                                                                        ]">
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-3xl">✍️</span>
                 </div>
@@ -35,9 +35,9 @@
                 <p class="text-xs text-slate-500 mt-2">Formular & Anmeldung</p>
             </div>
             <div @click="toggleStep('zaehlpunkt')" :class="[
-                                                                      'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
-                                                                      activeStep === 'zaehlpunkt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
-                                                                    ]">
+                                                                          'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
+                                                                          activeStep === 'zaehlpunkt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
+                                                                        ]">
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-3xl">🔢</span>
                 </div>
@@ -65,56 +65,53 @@
                         </div>
                     </div>
                     <div v-if="activeStep === 'beitritt'" class="prose prose-slate max-w-none">
-                       <h3 class="text-eeg-green mb-4">Schritt 2: Beitrittserklärung</h3>
+                        <h3 class="text-eeg-green mb-4">Schritt 2: Beitrittserklärung</h3>
     
-    <p class="mb-6">
-        Nach der Registrierung und dem Erhalt der Zählpunkte benötigen wir die schriftliche Zustimmung für die <strong>EEG Taufkirchen/Nord</strong>.
-    </p>
-
-    <!-- Download Sektion -->
-    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-        <div>
-            <h4 class="margin-0 text-slate-900 font-semibold">Beitrittserklärung PDF</h4>
-            <p class="text-sm text-slate-500 m-0">Bitte ausfüllen und unterschrieben retournieren.</p>
-        </div>
-        <a href="../assets/download/EEG-Beitrittserkl.pdf" 
-           download="EEG-Beitrittserkl.pdf" 
-           class="inline-flex items-center px-6 py-3 bg-eeg-green text-white rounded-lg hover:bg-green-700 transition-colors shadow-sm no-underline font-medium">
-           
-            Datei herunterladen
-        </a>
-    </div>
-
-    <h4 class="text-slate-900 font-bold mb-4">Wie geht es weiter?</h4>
+                        <p class="mb-6">
+                            Nach der Registrierung und dem Erhalt der Zählpunkte benötigen wir die schriftliche Zustimmung für die <strong>EEG Taufkirchen/Nord</strong>.
+                        </p>
     
-    <div class="space-y-6">
-        <!-- Schritt A -->
-        <div class="flex gap-4">
-            <div class="flex-none w-8 h-8 bg-eeg-green text-white rounded-full flex items-center justify-center font-bold">A</div>
-            <p class="m-0">Die Energiegemeinschaft schickt eine <strong>elektronische Anfrage</strong> an die Netz OÖ.</p>
-        </div>
-
-        <!-- Schritt B -->
-        <div class="flex gap-4">
-            <div class="flex-none w-8 h-8 bg-eeg-green text-white rounded-full flex items-center justify-center font-bold">B</div>
-            <div>
-                <p class="font-semibold text-slate-900 m-0">Freigabe im Portal:</p>
-                <p class="mt-1 leading-relaxed text-justify">
-                    Sobald diese Anfrage im System ist, erscheint diese im <strong>Netz OÖ eService-Portal</strong> unter dem Menüpunkt „Datenfreigaben“. Dort mußt du aktiv auf den blauen Haken oder „Bestätigen“ klicken.
-                </p>
-                
-                <!-- Wichtiger Hinweis innerhalb von Schritt B -->
-                <div class="mt-3 p-3 bg-amber-50 border-l-4 border-amber-400 text-amber-900 text-sm">
-                    <strong>Wichtig:</strong> Achte darauf, dass für <strong>beide Zählpunkte</strong> (Verbrauch & Einspeisung) die Viertelstundenwerte aktiviert sind.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Zusammenfassung -->
-    <div class="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200 italic text-slate-700">
-        <strong>Zusammengefasst:</strong> Sie müssen nicht selbst aktiv „melden“. Die EEG stellt die Anfrage, welche Sie lediglich im Portal der Netz OÖ bestätigen müssen.
-    </div>
+                        <!-- Download Sektion -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+                            <div>
+                                <h4 class="margin-0 text-slate-900 font-semibold">Beitrittserklärung PDF</h4>
+                                <p class="text-sm text-slate-500 m-0">Bitte ausfüllen und unterschrieben retournieren.</p>
+                            </div>
+                            <a :href="`${publicPath}downloads/EEG-Beitrittserkl.pdf`" download="EEG-Beitrittserkl.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-eeg-green text-white rounded-lg hover:bg-green-700 transition-colors shadow-sm no-underline font-medium">
+        Datei herunterladen
+    </a>
+                        </div>
+    
+                        <h4 class="text-slate-900 font-bold mb-4">Wie geht es weiter?</h4>
+    
+                        <div class="space-y-6">
+                            <!-- Schritt A -->
+                            <div class="flex gap-4">
+                                <div class="flex-none w-8 h-8 bg-eeg-green text-white rounded-full flex items-center justify-center font-bold">A</div>
+                                <p class="m-0">Die Energiegemeinschaft schickt eine <strong>elektronische Anfrage</strong> an die Netz OÖ.</p>
+                            </div>
+    
+                            <!-- Schritt B -->
+                            <div class="flex gap-4">
+                                <div class="flex-none w-8 h-8 bg-eeg-green text-white rounded-full flex items-center justify-center font-bold">B</div>
+                                <div>
+                                    <p class="font-semibold text-slate-900 m-0">Freigabe im Portal:</p>
+                                    <p class="mt-1 leading-relaxed text-justify">
+                                        Sobald diese Anfrage im System ist, erscheint diese im <strong>Netz OÖ eService-Portal</strong> unter dem Menüpunkt „Datenfreigaben“. Dort mußt du aktiv auf den blauen Haken oder „Bestätigen“ klicken.
+                                    </p>
+    
+                                    <!-- Wichtiger Hinweis innerhalb von Schritt B -->
+                                    <div class="mt-3 p-3 bg-amber-50 border-l-4 border-amber-400 text-amber-900 text-sm">
+                                        <strong>Wichtig:</strong> Achte darauf, dass für <strong>beide Zählpunkte</strong> (Verbrauch & Einspeisung) die Viertelstundenwerte aktiviert sind.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Zusammenfassung -->
+                        <div class="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200 italic text-slate-700">
+                            <strong>Zusammengefasst:</strong> Sie müssen nicht selbst aktiv „melden“. Die EEG stellt die Anfrage, welche Sie lediglich im Portal der Netz OÖ bestätigen müssen.
+                        </div>
                     </div>
                     <div v-if="activeStep === 'zaehlpunkt'" class="prose prose-slate max-w-none">
                         <div class="border-l-4 border-blue-500 bg-blue-50 rounded-r-lg p-4 mb-6 shadow-sm">
@@ -160,17 +157,17 @@
                                         <h2>Beispiel Zählpunkt OeMAG</h2>
                                         <div @click="isOpen = !isOpen" class="cursor-pointer transition-all duration-300">
                                             <p :class="[
-                                    'text-justify text-gray-700 leading-relaxed',
-                                    isOpen ? '' : 'line-clamp-3'
-                                  ]">
+                                        'text-justify text-gray-700 leading-relaxed',
+                                        isOpen ? '' : 'line-clamp-3'
+                                      ]">
                                                 hiermit bestätigen wir Ihnen gerne, dass ab dem Stichtag 01.01.2026 der von Ihrer Ökostromanlage (Zählpunktbezeichnung <strong>AT00300000000000000000000NNNNNNNNN)</strong> in das öffentliche Netz abgegebene
                                                 Strom von der OeMAG abgenommen wird. Die Vergütung der Einspeisemengen Ihrer Ökostromanlage kann somit ab diesem Zeitpunkt erfolgen. Ihre Daten AnlagenbetreiberIn: "NAME" Zählpunktbezeichnung: <strong>AT00300000000000000000000NNNNNNNNN</strong>                                            Vertragsnummer: FA00NNN Standort: 4775 Taufkirchen an der Pram Strasse Die Messung und Übermittlung der Einspeisemengen erfolgt ausschließlich durch den Netzbetreiber. Diese Daten werden, je nach Ihrer Vereinbarung
                                                 mit dem Netzbetreiber, vor Ort abgelesen oder digital über Ihren Smart Meter ausgelesen und an die OeMAG zur Abrechnung übermittelt.
                                             </p>
                                             <!-- Button-Indikator -->
                                             <button class="mt-2 text-sm font-semibold text-blue-600 hover:text-blue-800">
-                                {{ isOpen ? 'Weniger anzeigen' : 'Mehr anzeigen...' }}
-                              </button>
+                                    {{ isOpen ? 'Weniger anzeigen' : 'Mehr anzeigen...' }}
+                                  </button>
                                         </div>
                                     </article>
                                 </div>
@@ -196,8 +193,8 @@
                         </section>
                     </div>
                     <button @click="activeStep = null" class="mt-6 text-slate-400 hover:text-slate-600 text-xs flex items-center">
-                                                                        <span class="mr-1">✕</span> Details schließen
-                                                                      </button>
+                                                                            <span class="mr-1">✕</span> Details schließen
+                                                                          </button>
                 </div>
             </transition>
         </div>
@@ -214,6 +211,7 @@ import registerErkl from '../assets/netzOE/netzOEReg1.png'
 import zaehlpunkt from '../assets/netzOE/zaehlpunkt.png'
 import zaehlernummer from '../assets/netzOE/zaehlerNummer.jpg'
 import zaehlernummerGross from '../assets/netzOE/zaehlerNummerGross.jpg'
+
 const activeStep = ref(null);
 const isOpen = ref(false);
 const toggleStep = (step) => {
