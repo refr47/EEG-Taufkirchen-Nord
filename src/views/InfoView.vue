@@ -1,50 +1,81 @@
 <template>
-    <div class="my-8 overflow-hidden rounded-xl border border-gray-200 shadow-lg bg-white">
-        <table class="min-w-full">
-            <thead class="hidden md:table-header-group bg-slate-50 border-b border-gray-200">
-                <tr>
-                    <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest text-slate-500 w-1/3">Frage</th>
-                    <th class="px-6 py-4 text-left text-xs font-black uppercase tracking-widest text-slate-500">Antwort</th>
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100">
-                <tr v-for="(item, index) in faqs" :key="index" class="flex flex-col md:table-row hover:bg-slate-50 transition-colors">
-                    <td class="px-6 py-4 text-sm font-bold text-slate-800 bg-slate-50 md:bg-transparent md:table-cell leading-snug">
-                        <span class="md:hidden text-[10px] text-eeg-green block uppercase mb-1">Frage</span> {{ item.frage }}
-                    </td>
-                    <td class="px-6 py-5 text-sm text-slate-600 md:table-cell border-l-4 border-eeg-green md:border-l-4 ">
-                        <span class="md:hidden text-[10px] text-slate-400 block uppercase mb-1">Antwort</span>
-                        <div v-html="item.antwort"></div>
-                        <div v-if="item.bildURL" class="mt-4">
-                            <div @click="toggleBildSize(item.id)" :class="[
-                                                                        activeBildId === item.id ? 'max-w-full' : 'max-w-[150px] cursor-zoom-in',
-                                                                        'relative overflow-hidden rounded-lg border shadow-sm transition-all duration-500 ease-in-out'
-                                                                    ]">
-                                <img :src="item.bildURL" class="w-full h-auto object-cover" alt="FAQ Bild" />
-                                <div v-if="activeBildId !== item.id" class="absolute inset-0 bg-black/5 hover:bg-black/0 transition-colors flex items-end p-2">
-                                    <span class="bg-white/80 backdrop-blur px-2 py-1 rounded text-[10px] font-bold shadow">VERGRÖSSERN</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-if="item.videoID" class="mt-4">
-                            <div @click="toggleVideoSize(item.id)" :class="[
-                                                                    activeVideoId === item.id ? 'max-w-4xl' : 'max-w-xs grayscale',
-                                                                    'relative overflow-hidden rounded-lg border shadow-lg transition-all duration-500 cursor-pointer'
-                                                                ]">
-                                <div class="aspect-video">
-                                    <iframe class="w-full h-full" :src="'https://www.youtube-nocookie.com/embed/' + item.videoID" frameborder="0" allowfullscreen>
-                                                                                        </iframe>
-                                </div>
-                            </div>
-                            <button v-if="activeVideoId === item.id" @click="toggleVideoSize(item.id)" class="mt-2 text-xs font-bold text-eeg-green underline uppercase">
-                                                                                    Wieder verkleinern
-                                                                                </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="max-w-4xl mx-auto my-12 px-4">
+    <div class="space-y-4">
+      <div 
+        v-for="(item, index) in faqs" 
+        :key="item.id || index" 
+        class="border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:border-eeg-green shadow-sm"
+        :class="{ 'ring-2 ring-eeg-green/20 border-eeg-green': openIndex === index }"
+      >
+        <button 
+          @click="toggleFaq(index)" 
+          class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors group"
+        >
+          <span class="text-lg font-bold text-slate-800 group-hover:text-eeg-green transition-colors">
+            {{ item.frage }}
+          </span>
+          <span 
+            class="ml-4 text-eeg-green transition-transform duration-300 shrink-0"
+            :class="{ 'rotate-180': openIndex === index }"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </button>
+
+        <div 
+          v-show="openIndex === index" 
+          class="px-6 pb-6 animate-fadeIn"
+        >
+          <div class="h-px bg-slate-100 mb-6"></div>
+          
+          <div class="text-slate-600 leading-relaxed prose prose-slate max-w-none" v-html="item.antwort"></div>
+
+          <div v-if="item.bildURL" class="mt-6">
+            <div 
+              @click="activeBildId = (activeBildId === item.id ? null : item.id)"
+              :class="[
+                activeBildId === item.id ? 'max-w-full' : 'max-w-[180px] cursor-zoom-in',
+                'relative overflow-hidden rounded-xl border shadow-sm transition-all duration-500'
+              ]"
+            >
+              <img :src="item.bildURL" class="w-full h-auto" alt="Info Bild" />
+              <div v-if="activeBildId !== item.id" class="absolute inset-0 bg-black/5 flex items-end p-2 opacity-0 hover:opacity-100 transition-opacity">
+                <span class="bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold shadow-sm">VERGRÖSSERN 🔍</span>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="item.videoID" class="mt-6">
+            <div 
+              @click="activeVideoId = (activeVideoId === item.id ? null : item.id)"
+              :class="[
+                activeVideoId === item.id ? 'max-w-full' : 'max-w-xs grayscale',
+                'relative overflow-hidden rounded-xl border shadow-lg transition-all duration-500 cursor-pointer'
+              ]"
+            >
+              <div class="aspect-video">
+                <iframe 
+                  class="w-full h-full" 
+                  :src="'https://www.youtube-nocookie.com/embed/' + item.videoID" 
+                  frameborder="0" 
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <button 
+              v-if="activeVideoId === item.id" 
+              @click="activeVideoId = null"
+              class="mt-3 text-xs font-black text-eeg-green uppercase underline"
+            >
+              Video verkleinern
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup>
@@ -55,7 +86,8 @@ import {
 import eegImage from '@/assets/eegPrinzip.png';
 let activeVideoId = ref(null);
 let activeBildId = ref(null);
-const faqs = [{
+const openIndex = ref(null);
+const faqs = ref( [{
         id: 1,
         frage: "Was ist eine Energiegemeinschaft?",
         antwort: `
@@ -214,7 +246,7 @@ const faqs = [{
         frage: "Welche Kosten fallen an?",
         antwort: `
             <p>
-            Es wird ein <strong>Mitgliedsbeitrag von € 5 pro Quartal</strong> eingehoben.
+            Es wird ein <strong>Mitgliedsbeitrag von € 1.00 pro Quartal</strong> eingehoben.
             </p>
             <p>
             Dieser deckt laufende Kosten wie Plattform, Abrechnung und Kontoführung.
@@ -262,15 +294,18 @@ const faqs = [{
           Dies müsste jedoch die EEG Taufkirchen/Nord selbst organisieren, finanzieren und betreiben. Es gibt aktuell keine Pläne oder Ressourcen, um dies umzusetzen.
             </p> `   
     }
-];
+])
+const toggleFaq = (index) => {
+  openIndex.value = openIndex.value === index ? null : index;
+};
 // 4. Methoden werden als einfache Funktionen geschrieben
-const toggleVideoSize = (id) => {
+/* const toggleVideoSize = (id) => {
     activeVideoId.value = (activeVideoId.value === id) ? null : id;
     console.log("Video Fokus auf ID:", activeVideoId.value);
 };
 const toggleBildSize = (id) => {
     activeBildId.value = (activeBildId.value === id) ? null : id;
-};
+}; */
 // 5. Lifecycle Hooks
 onMounted(() => {
     console.log("INFO VIEW GEMOUNTED (Setup)");
@@ -278,6 +313,13 @@ onMounted(() => {
 </script>
 
 <style scoped>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
 :deep(.custom-list) {
     list-style-type: '►';
     /* Dein gewünschtes Präfix */
