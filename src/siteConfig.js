@@ -9,8 +9,6 @@ export const pricing = {
     
       },  // Preis pro kWh inkl. MwSt
     bezug: {
-        display: "10,00",       // Preis ohne Steuer (Kleinunternehmer)
-        bruttoDisplay: "14,13", // Endpreis inkl. reduzierter Netzkosten
         netto: 9.50,
         brutto: 0.1413          // Wert für Berechnungen
     },
@@ -20,5 +18,16 @@ export const pricing = {
     vergleich: {
         normalBrutto: 0.2580,
         ersparnisProzent: 45    // Berechneter Wert für die Anzeige
+    },
+    tarife: {
+        gueltigAb: '01.01.2026',
+
+    },
+    background: {
+
+        saturation: 0,   // 0 bis 2 (0 = S/W)ts
+        brightness: 1.05,  // 0.5 bis 1.5
+        scale: 0.1,
+        overlayOpacity: 'bg-white/40' // Tailwind Klasse für den Schleier
     }
 };

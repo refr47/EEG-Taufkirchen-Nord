@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="min-h-screen bg-gray-50 flex flex-col">
+    <div id="app" class="min-h-screen  flex flex-col">
         <header class="fixed top-0 left-0 w-full z-[100] bg-white shadow-xl">
     
             <div class="absolute inset-0 z-0 pointer-events-none">
@@ -33,7 +33,9 @@
                                     <router-link v-if="isLoggedIn" to="/energie" class="font-bold text-eeg-green">
                                         Energie
                                     </router-link>
-    
+                                    <li>
+                                        <router-link to="/verein" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Verein</router-link>
+                                    </li>
                                     <li>
                                         <router-link to="/kontakt" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Kontakt</router-link>
                                     </li>
@@ -49,25 +51,25 @@
                         </div>
     
                         <button @click="showMap = !showMap" class="hidden md:block bg-eeg-green text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-green-700 shadow-sm transition-all">
-                                        {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet' }}
-                                    </button>
+                                            {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet' }}
+                                        </button>
                         <MapModal :isOpen="showMap" :imageSrc="trafoPath" title="Alle grün eingefärbten Objekte!!" @close="showMap = false" />
     
                         <button @click="toggleMenu" class="md:hidden p-2 text-slate-800 text-2xl">
-                                        {{ isMenuOpen ? '✕' : '☰' }}
-                                    </button>
+                                            {{ isMenuOpen ? '✕' : '☰' }}
+                                        </button>
     
                         <button @click="toggleLogin" :class="[
-                            'hidden md:block px-5 py-2 rounded-full text-xs font-bold shadow-sm transition-all border-2 border-eeg-green',
-                            isLoggedIn 
-                                ? 'bg-white text-eeg-green hover:bg-slate-50' 
-                                : 'bg-eeg-green text-white hover:bg-green-700'
-                        ]">
-                        
-                                        {{ isLoggedIn ? 'Angemeldet' : 'Anmelden' }}
-                                    </button>
+                                'hidden md:block px-5 py-2 rounded-full text-xs font-bold shadow-sm transition-all border-2 border-eeg-green',
+                                isLoggedIn 
+                                    ? 'bg-white text-eeg-green hover:bg-slate-50' 
+                                    : 'bg-eeg-green text-white hover:bg-green-700'
+                            ]">
+                            
+                                            {{ isLoggedIn ? 'Angemeldet' : 'Anmelden' }}
+                                        </button>
     
-                        
+    
     
                     </div>
                 </div>
@@ -90,6 +92,9 @@
                             <router-link to="/energie" @click="closeMenu" class="text-eeg-green block w-full">Energie</router-link>
                         </li>
                         <li>
+                            <router-link to="/verein" @click="closeMenu" class="block w-full">Verein</router-link>
+                        </li>
+                        <li>
                             <router-link to="/kontakt" @click="closeMenu" class="block w-full">Kontakt</router-link>
                         </li>
     
@@ -102,15 +107,15 @@
                             </div>
     
                             <button @click="showMap = !showMap; closeMenu()" class="w-full bg-slate-100 text-slate-700 py-3 rounded-xl text-sm font-bold active:bg-slate-200">
-                    {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet Karte' }}
-                </button>
+                        {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet Karte' }}
+                    </button>
     
                             <button @click="toggleLogin(); closeMenu()" :class="[
-                    'w-full py-3 rounded-xl text-sm font-bold transition-all shadow-sm',
-                    isLoggedIn ? 'bg-white text-eeg-green border-2 border-eeg-green' : 'bg-eeg-green text-white'
-                ]">
-                    {{ isLoggedIn ? 'Konto Abmelden' : 'Anmelden' }}
-                </button>
+                        'w-full py-3 rounded-xl text-sm font-bold transition-all shadow-sm',
+                        isLoggedIn ? 'bg-white text-eeg-green border-2 border-eeg-green' : 'bg-eeg-green text-white'
+                    ]">
+                        {{ isLoggedIn ? 'Konto Abmelden' : 'Anmelden' }}
+                    </button>
                         </div>
                     </ul>
                 </nav>
@@ -118,47 +123,55 @@
     
         </header>
     
+    
         <main class="pt-32 flex-grow container mx-auto px-4">
+            <div class="fixed inset-0 -z-50 w-full h-full pointer-events-none">
+                <img src="./assets/trafo/trafo.png" class="w-full h-full object-cover opacity-10" />
+    
+            </div>
             <!-- <p class="bg-red-500 text-white">AB HIER BEGINNT DIE ROUTER-VIEW</p> -->
             <router-view></router-view>
         </main>
-        <!--  <transition name="fade">
-                        <div v-if="showMap" class="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-12">
-                            <div @click="showMap = false" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"></div>
-                
-                            <div class="relative z-[210] max-w-5xl w-full h-auto bg-white p-2 rounded-2xl shadow-2xl transition-transform duration-300">
-                
-                                <button @click="showMap = false" class="absolute -top-4 -right-4 bg-eeg-green text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors border-2 border-white text-xl font-bold">
-                                    ✕
-                                </button>
-                
-                                <img src="@/assets/trafo5002.png" class="w-full h-auto rounded-xl object-contain" @click="showMap = false" />
-                
-                                <p class="text-center py-2 text-slate-500 font-bold text-sm uppercase tracking-wider">
-                                     Alle grün eingefärbten Objekte!!
-                                </p>
-                            </div>
-                        </div>
-                    </transition> -->
+    
     </div>
 </template>
 
 <script setup>
 import {
     ref,
-    watch
+    watch,
+
 } from 'vue';
 import {
     useRoute
 } from 'vue-router';
 import MapModal from './components/MapModal.vue';
 import trafoPath from '@/assets/trafo5002.png';
+//import { pricing } from '@/siteConfig';
+//import bgImage from '@/assets/trafo/trafo.png';
 
 // State (Reaktive Variablen)
 let isMenuOpen = ref(false);
 let showMap = ref(false);
 // Neu: Login Status
 let isLoggedIn = ref(false);
+
+/* onst backgroundStyle = computed(() => {
+  return {
+    // Sättigung und Helligkeit
+    filter: `saturate(${pricing.saturation}) brightness(${pricing.brightness})`,
+    WebkitFilter: `saturate(${pricing.saturation}) brightness(${pricing.brightness})`,
+    
+    // Größe / Zoom
+    // scale(1.1) vergrößert das Bild leicht, damit bei Filtern keine Ränder entstehen
+    transform: `scale(${pricing.scale})`,
+    
+    // Performance-Optimierung (wichtig bei Filtern!)
+    willChange: 'filter',
+    transition: 'filter 0.5s ease-in-out'
+  };
+}); */
+
 
 // Simulation eines Login-Vorgangs
 // Die Funktion, die aufgerufen werden soll
@@ -185,6 +198,10 @@ watch(() => route.path, () => {
 </script>
 
 <style>
+body {
+    background-color: transparent !important;
+}
+
 /* Hier nur falls nötig globale Stile, am besten leer lassen */
 
 .text-eeg-green {

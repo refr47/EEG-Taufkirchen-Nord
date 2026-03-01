@@ -1,22 +1,80 @@
 <template>
-  <PageSkeleton title="Informationen" subtitle="EEG Taufkirchen Nord">
-    <div class="prose max-w-none">
-      <p class="text-lg text-slate-700">
-        Unsere Energiegemeinschaft ermöglicht es, lokal erzeugten Strom 
-        direkt in der Nachbarschaft zu verbrauchen.
-      </p>
-      <ul class="mt-4 list-disc list-inside text-slate-600">
-        <li>Region: Taufkirchen & Umgebung</li>
-        <li>Fokus: Photovoltaik & Wind</li>
-      </ul>
+     <h3 class="text-2xl md:text-3xl font-black text-slate-800 leading-tight mb-12 border-l-8 border-eeg-green pl-6">
+            Bei offenen Fragen, Anregungen oder Interesse .....
+        </h3>
+    <div class="max-w-6xl mx-auto p-6">
+       
+
+        <div class="flex flex-col md:flex-row gap-12 items-start">
+            
+            <div class="w-full md:w-1/3 lg:w-1/4">
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white h-[450px]">
+                    <img 
+                        :src="trafo" 
+                        class="w-full h-full object-cover" 
+                        :style="{ transform: `scale(${trafoSettings.scale})` }" 
+                        alt="Trafo Station"
+                    />
+                </div>
+            </div>
+
+            <div class="w-full md:w-2/3 lg:w-3/4 space-y-8 py-4">
+                <div class="grid grid-cols-1 gap-8">
+                    
+                    <div class="flex items-center space-x-5 group">
+                        <div class="bg-eeg-green/10 p-4 rounded-2xl group-hover:bg-eeg-green group-hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase font-black tracking-widest text-slate-400">Adresse</p>
+                            <p class="text-xl font-bold text-slate-700">Flieherstrasse 13, 4775  Taufkirchen</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-5 group">
+                        <div class="bg-blue-50 p-4 rounded-2xl group-hover:bg-blue-500 group-hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase font-black tracking-widest text-slate-400">E-Mail</p>
+                            <a href="mailto:eeg-taukirchen-node@info.de" class="text-xl font-bold text-eeg-green hover:underline">
+                                eeg-taukirchen-node@info.de
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-5 group">
+                        <div class="bg-slate-100 p-4 rounded-2xl group-hover:bg-slate-800 group-hover:text-white transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase font-black tracking-widest text-slate-400">ZVR-Zahl</p>
+                            <p class="text-xl font-mono font-bold text-slate-600 tracking-tighter">SAFSAFAFAF</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </PageSkeleton>
 </template>
 
-<script>
-import PageSkeleton from './PageSkeleton.vue'
-
-export default {
-  components: { PageSkeleton }
-}
+<script setup>
+import trafo from '@/assets/trafo/trafo.png';
+const trafoSettings = {
+    scale: 1.1, // 1.1 = 110% (leichter Zoom)
+    brightness: 1.05,
+    saturation: 0.5
+};
 </script>
+
+
+
+/*  Bei Fragen, Anregungen oder Interesse an einer Mitgliedschaft stehen wir Ihnen gerne zur Verfügung. Kontaktieren Sie uns über die folgenden Kanäle:

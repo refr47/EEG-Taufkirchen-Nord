@@ -1,81 +1,64 @@
 <template>
-  <div class="max-w-4xl mx-auto my-12 px-4">
-    <div class="space-y-4">
-      <div 
-        v-for="(item, index) in faqs" 
-        :key="item.id || index" 
-        class="border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:border-eeg-green shadow-sm"
-        :class="{ 'ring-2 ring-eeg-green/20 border-eeg-green': openIndex === index }"
-      >
-        <button 
-          @click="toggleFaq(index)" 
-          class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors group"
-        >
-          <span class="text-lg font-bold text-slate-800 group-hover:text-eeg-green transition-colors">
-            {{ item.frage }}
-          </span>
-          <span 
-            class="ml-4 text-eeg-green transition-transform duration-300 shrink-0"
-            :class="{ 'rotate-180': openIndex === index }"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
-            </svg>
-          </span>
-        </button>
-
-        <div 
-          v-show="openIndex === index" 
-          class="px-6 pb-6 animate-fadeIn"
-        >
-          <div class="h-px bg-slate-100 mb-6"></div>
-          
-          <div class="text-slate-600 leading-relaxed prose prose-slate max-w-none" v-html="item.antwort"></div>
-
-          <div v-if="item.bildURL" class="mt-6">
-            <div 
-              @click="activeBildId = (activeBildId === item.id ? null : item.id)"
-              :class="[
-                activeBildId === item.id ? 'max-w-full' : 'max-w-[180px] cursor-zoom-in',
-                'relative overflow-hidden rounded-xl border shadow-sm transition-all duration-500'
-              ]"
-            >
-              <img :src="item.bildURL" class="w-full h-auto" alt="Info Bild" />
-              <div v-if="activeBildId !== item.id" class="absolute inset-0 bg-black/5 flex items-end p-2 opacity-0 hover:opacity-100 transition-opacity">
-                <span class="bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold shadow-sm">VERGRÖSSERN 🔍</span>
-              </div>
-            </div>
-          </div>
-
-          <div v-if="item.videoID" class="mt-6">
-            <div 
-              @click="activeVideoId = (activeVideoId === item.id ? null : item.id)"
-              :class="[
-                activeVideoId === item.id ? 'max-w-full' : 'max-w-xs grayscale',
-                'relative overflow-hidden rounded-xl border shadow-lg transition-all duration-500 cursor-pointer'
-              ]"
-            >
-              <div class="aspect-video">
-                <iframe 
-                  class="w-full h-full" 
-                  :src="'https://www.youtube-nocookie.com/embed/' + item.videoID" 
-                  frameborder="0" 
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-            <button 
-              v-if="activeVideoId === item.id" 
-              @click="activeVideoId = null"
-              class="mt-3 text-xs font-black text-eeg-green uppercase underline"
-            >
-              Video verkleinern
+      <h3 class="text-3xl md:text-4xl font-black text-slate-800 leading-tight   mt-4 border-l-8 border-eeg-green pl-6">
+        Das Wichtigste auf einen Blick
+        </h3>
+    <div class="max-w-4xl mx-auto my-12 px-4">
+        <div class="space-y-4">
+            <div v-for="(item, index) in faqs" :key="item.id || index" class="border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:border-eeg-green shadow-sm" :class="{ 'ring-2 ring-eeg-green/20 border-eeg-green': openIndex === index }">
+                <button @click="toggleFaq(index)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors group">
+              <span class="text-lg font-bold text-slate-800 group-hover:text-eeg-green transition-colors">
+                {{ item.frage }}
+              </span>
+              <span 
+                class="ml-4 text-eeg-green transition-transform duration-300 shrink-0"
+                :class="{ 'rotate-180': openIndex === index }"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
             </button>
-          </div>
+    
+                <div v-show="openIndex === index" class="px-6 pb-6 animate-fadeIn">
+                    <div class="h-px bg-slate-100 mb-6"></div>
+    
+                    <div class="text-slate-600 leading-relaxed prose prose-slate max-w-none" v-html="item.antwort"></div>
+    
+                    <div v-if="item.linkURL" class="mt-4">
+                        <router-link to="/tarif" class="text-eeg-green font-bold hover:underline">
+                              Tarife
+                        </router-link>
+                        
+                    </div>
+                    <div v-if="item.bildURL" class="mt-6">
+                        <div @click="activeBildId = (activeBildId === item.id ? null : item.id)" :class="[
+                    activeBildId === item.id ? 'max-w-full' : 'max-w-[180px] cursor-zoom-in',
+                    'relative overflow-hidden rounded-xl border shadow-sm transition-all duration-500'
+                  ]">
+                            <img :src="item.bildURL" class="w-full h-auto" alt="Info Bild" />
+                            <div v-if="activeBildId !== item.id" class="absolute inset-0 bg-black/5 flex items-end p-2 opacity-0 hover:opacity-100 transition-opacity">
+                                <span class="bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold shadow-sm">VERGRÖSSERN 🔍</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div v-if="item.videoID" class="mt-6">
+                        <div @click="activeVideoId = (activeVideoId === item.id ? null : item.id)" :class="[
+                    activeVideoId === item.id ? 'max-w-full' : 'max-w-xs grayscale',
+                    'relative overflow-hidden rounded-xl border shadow-lg transition-all duration-500 cursor-pointer'
+                  ]">
+                            <div class="aspect-video">
+                                <iframe class="w-full h-full" :src="'https://www.youtube-nocookie.com/embed/' + item.videoID" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button v-if="activeVideoId === item.id" @click="activeVideoId = null" class="mt-3 text-xs font-black text-eeg-green uppercase underline">
+                  Video verkleinern
+                </button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -87,7 +70,7 @@ import eegImage from '@/assets/eegPrinzip.png';
 let activeVideoId = ref(null);
 let activeBildId = ref(null);
 const openIndex = ref(null);
-const faqs = ref( [{
+const faqs = ref([{
         id: 1,
         frage: "Was ist eine Energiegemeinschaft?",
         antwort: `
@@ -150,11 +133,73 @@ const faqs = ref( [{
             <li>Netzentgelte reduzieren sich gesetzlich um <strong>57 %</strong></li>
             <li>Für EEG-Strom fallen <strong>kaum staatliche Abgaben</strong> an</li>
             </ul>
-            `
+            
+            `,
+            linkURL: "Tarife",
+           
+    },
+    {
+        id: 5,
+        frage: "Der SmartMeter als Voraussetzung – was bedeutet das für mich?",
+        antwort: `
+             <p>
+                Ein <a href="https://www.netzooe.at/themen/information/smart-meter" target="_blank" class="text-eeg-green font-semibold">SmartMeter</a> ist ein digitaler, kommunikationsfähiger Stromzähler, der den Energieverbrauch (und bei PV-Anlagen die Einspeisung) präzise misst. Er übermittelt die Daten automatisch an den Netzbetreiber, was eine genaue Abrechnung ermöglicht. Für die Mitgliedschaft in der EEG Taufkirchen/Nord ist ein Smart Meter erforderlich, da er die Grundlage für die Erfassung und Verteilung des Stroms innerhalb der Gemeinschaft bildet.
+            </p>
+            
+           `
+        },
+         {
+        id: 5,
+        frage: "Müssen Montagearbeiten oder Softwareinstallationen am SmartMeter durchgeführt werden?",
+        antwort: `
+            <p>
+            Der SmartMeter wird/wurde von Netz OÖ installiert und ist über das E-Service-Portal erreichbar. Damit können die Verbrauchsdaten automatisch abgerufen werden und es bedarf keiner weiteren Montagearbeiten oder Softwareinstallationen.
+             </p>
+            
+           `       
+            
     },
     {
         id: 4,
-        frage: "Wie kann ich die Stromkosten beeinflussen?",
+        frage: "Gibt es eine Preisgarantie und wer setzt die Preise fest?",
+        antwort: `
+              <ul class="list-disc list-inside space-y-1">
+            <li>Die <a href="https://www.oem-ag.at" target="_blank" class="text-eeg-green font-semibold">OeMAG</a> setzt den Marktpreise monatlich am Anfang des nächsten Monats für das abgelaufene Monat fest. Die EEG Taufkirchen/Nord lehnt sich an diese Modus an.</li>
+             <li>
+            Die Preise werden daher vom Vorstand der EEG Taufkirchen/Nord monatlich festgelegt, wobei die OeMAG-Preise als Orientierung dienen. 
+            </  li>
+             <li>
+            Eine Preisgarantie ist daher nicht vorgesehen.</li>
+            </ul>
+            `
+    },
+    {
+        id: 6,
+        frage: "Wie wird die Abrechnung durchgeführt?",
+        antwort: `
+            <p>
+            Die Abrechnung erfolgt <strong>monatlich</strong>.
+            </p>
+            <ul class="list-disc list-inside space-y-1">
+            <li>Offene Beträge werden per <strong>Bankeinzug</strong> abgebucht</li>
+            <li>Guthaben werden per <strong>Überweisung</strong> ausbezahlt</li>
+            </ul>
+            <p>
+            Alle Details findest du jederzeit in deinem <strong>Online-Portal</strong>.
+            </p>
+            <p>
+            Die gesamte Kommunikation erfolgt <strong>ausschließlich digital</strong>.
+            Es werden <strong>keine Briefe</strong> versendet.
+            </p>
+            <p class="font-semibold text-eeg-green">
+            Transparent, papierlos und jederzeit online verfügbar.
+            </p>
+            `
+    },
+   
+    {
+        id: 4,
+        frage: "Wie kann ich meine Stromkosten beeinflussen?",
         antwort: `
             <p>
             Der wichtigste Hebel für deine Stromkosten ist <strong>der Zeitpunkt deines Verbrauchs</strong>.
@@ -183,9 +228,10 @@ const faqs = ref( [{
             </p>
             `
     },
+   
     {
         id: 5,
-        frage: "Woher weiß ich, wann viel Strom erzeugt wird?",
+        frage: "Woher weiß ich, wann viel Strom in der EEG erzeugt bzw. verbraucht wird?",
         antwort: `
             <p>
             Im <strong>Online-Portal</strong> siehst du in Echtzeit, wie viel Strom gerade in der EEG produziert wird.
@@ -195,29 +241,6 @@ const faqs = ref( [{
             </p>
             <p>
             Für technisch versierte Mitglieder steht zusätzlich eine <strong>API-Schnittstelle</strong> zur Verfügung.
-            </p>
-            `
-    },
-    {
-        id: 6,
-        frage: "Wie wird die Abrechnung durchgeführt?",
-        antwort: `
-            <p>
-            Die Abrechnung erfolgt <strong>quartalsweise</strong>.
-            </p>
-            <ul class="list-disc list-inside space-y-1">
-            <li>Offene Beträge werden per <strong>Bankeinzug</strong> abgebucht</li>
-            <li>Guthaben werden per <strong>Überweisung</strong> ausbezahlt</li>
-            </ul>
-            <p>
-            Alle Details findest du jederzeit in deinem <strong>Online-Portal</strong>.
-            </p>
-            <p>
-            Die gesamte Kommunikation erfolgt <strong>ausschließlich digital</strong>.
-            Es werden <strong>keine Briefe</strong> versendet.
-            </p>
-            <p class="font-semibold text-eeg-green">
-            Transparent, papierlos und jederzeit online verfügbar.
             </p>
             `
     },
@@ -246,7 +269,7 @@ const faqs = ref( [{
         frage: "Welche Kosten fallen an?",
         antwort: `
             <p>
-            Es wird ein <strong>Mitgliedsbeitrag von € 1.00 pro Quartal</strong> eingehoben.
+            Es wird ein <strong>Einschreibungsgebuhr von € 10.00</strong> eingehoben.
             </p>
             <p>
             Dieser deckt laufende Kosten wie Plattform, Abrechnung und Kontoführung.
@@ -268,7 +291,7 @@ const faqs = ref( [{
             <br>
             <p>
           Die <strong>reuzierten Netzgebühren</strong> werden weiterhin über deinen Energieversorger in der Monats- oder Jahresabrechnung ausgewiesen und dort automatisch korrekt verrechnet. Du musst dich um nichts kümmern.
-            </p> `   
+            </p> `
     },
     {
         id: 11,
@@ -280,7 +303,7 @@ const faqs = ref( [{
             <br>
             <p>
           Es kann Strom in Zeiten, in denen Überschuss besteht, <strong>günstig</strong> bezogen werden kann. So nutzt du auch nachhaltigen, regional erzeugten Strom .
-            </p> `   
+            </p> `
     },
     {
         id: 12,
@@ -292,11 +315,11 @@ const faqs = ref( [{
             <br>
             <p>
           Dies müsste jedoch die EEG Taufkirchen/Nord selbst organisieren, finanzieren und betreiben. Es gibt aktuell keine Pläne oder Ressourcen, um dies umzusetzen.
-            </p> `   
+            </p> `
     }
 ])
 const toggleFaq = (index) => {
-  openIndex.value = openIndex.value === index ? null : index;
+    openIndex.value = openIndex.value === index ? null : index;
 };
 // 4. Methoden werden als einfache Funktionen geschrieben
 /* const toggleVideoSize = (id) => {
@@ -314,12 +337,20 @@ onMounted(() => {
 
 <style scoped>
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 .animate-fadeIn {
-  animation: fadeIn 0.3s ease-out forwards;
+    animation: fadeIn 0.3s ease-out forwards;
 }
+
 :deep(.custom-list) {
     list-style-type: '►';
     /* Dein gewünschtes Präfix */
