@@ -1,23 +1,23 @@
 <template>
-      <h3 class="text-3xl md:text-4xl font-black text-slate-800 leading-tight   mt-4 border-l-8 border-eeg-green pl-6">
+    <h3 class="text-3xl md:text-4xl font-black text-slate-800 leading-tight   mt-4 border-l-8 border-eeg-green pl-6">
         Das Wichtigste auf einen Blick
-        </h3>
+    </h3>
     <div class="max-w-4xl mx-auto my-12 px-4">
         <div class="space-y-4">
             <div v-for="(item, index) in faqs" :key="item.id || index" class="border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all duration-300 hover:border-eeg-green shadow-sm" :class="{ 'ring-2 ring-eeg-green/20 border-eeg-green': openIndex === index }">
                 <button @click="toggleFaq(index)" class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors group">
-              <span class="text-lg font-bold text-slate-800 group-hover:text-eeg-green transition-colors">
-                {{ item.frage }}
-              </span>
-              <span 
-                class="ml-4 text-eeg-green transition-transform duration-300 shrink-0"
-                :class="{ 'rotate-180': openIndex === index }"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
-                </svg>
-              </span>
-            </button>
+                          <span class="text-lg font-bold text-slate-800 group-hover:text-eeg-green transition-colors">
+                            {{ item.frage }}
+                          </span>
+                          <span 
+                            class="ml-4 text-eeg-green transition-transform duration-300 shrink-0"
+                            :class="{ 'rotate-180': openIndex === index }"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </span>
+                        </button>
     
                 <div v-show="openIndex === index" class="px-6 pb-6 animate-fadeIn">
                     <div class="h-px bg-slate-100 mb-6"></div>
@@ -26,15 +26,15 @@
     
                     <div v-if="item.linkURL" class="mt-4">
                         <router-link to="/tarif" class="text-eeg-green font-bold hover:underline">
-                              Tarife
+                            Tarife
                         </router-link>
-                        
+    
                     </div>
                     <div v-if="item.bildURL" class="mt-6">
                         <div @click="activeBildId = (activeBildId === item.id ? null : item.id)" :class="[
-                    activeBildId === item.id ? 'max-w-full' : 'max-w-[180px] cursor-zoom-in',
-                    'relative overflow-hidden rounded-xl border shadow-sm transition-all duration-500'
-                  ]">
+                                activeBildId === item.id ? 'max-w-full' : 'max-w-[180px] cursor-zoom-in',
+                                'relative overflow-hidden rounded-xl border shadow-sm transition-all duration-500'
+                              ]">
                             <img :src="item.bildURL" class="w-full h-auto" alt="Info Bild" />
                             <div v-if="activeBildId !== item.id" class="absolute inset-0 bg-black/5 flex items-end p-2 opacity-0 hover:opacity-100 transition-opacity">
                                 <span class="bg-white/90 backdrop-blur px-2 py-1 rounded text-[10px] font-bold shadow-sm">VERGRÖSSERN 🔍</span>
@@ -44,16 +44,16 @@
     
                     <div v-if="item.videoID" class="mt-6">
                         <div @click="activeVideoId = (activeVideoId === item.id ? null : item.id)" :class="[
-                    activeVideoId === item.id ? 'max-w-full' : 'max-w-xs grayscale',
-                    'relative overflow-hidden rounded-xl border shadow-lg transition-all duration-500 cursor-pointer'
-                  ]">
+                                activeVideoId === item.id ? 'max-w-full' : 'max-w-xs grayscale',
+                                'relative overflow-hidden rounded-xl border shadow-lg transition-all duration-500 cursor-pointer'
+                              ]">
                             <div class="aspect-video">
                                 <iframe class="w-full h-full" :src="'https://www.youtube-nocookie.com/embed/' + item.videoID" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
                         <button v-if="activeVideoId === item.id" @click="activeVideoId = null" class="mt-3 text-xs font-black text-eeg-green uppercase underline">
-                  Video verkleinern
-                </button>
+                              Video verkleinern
+                            </button>
                     </div>
                 </div>
             </div>
@@ -135,11 +135,11 @@ const faqs = ref([{
             </ul>
             
             `,
-            linkURL: "Tarife",
-           
+        linkURL: "Tarife",
+
     },
     {
-        id: 5,
+        id: 4,
         frage: "Der SmartMeter als Voraussetzung – was bedeutet das für mich?",
         antwort: `
              <p>
@@ -147,8 +147,8 @@ const faqs = ref([{
             </p>
             
            `
-        },
-         {
+    },
+    {
         id: 5,
         frage: "Müssen Montagearbeiten oder Softwareinstallationen am SmartMeter durchgeführt werden?",
         antwort: `
@@ -156,11 +156,11 @@ const faqs = ref([{
             Der SmartMeter wird/wurde von Netz OÖ installiert und ist über das E-Service-Portal erreichbar. Damit können die Verbrauchsdaten automatisch abgerufen werden und es bedarf keiner weiteren Montagearbeiten oder Softwareinstallationen.
              </p>
             
-           `       
-            
+           `
+
     },
     {
-        id: 4,
+        id: 6,
         frage: "Gibt es eine Preisgarantie und wer setzt die Preise fest?",
         antwort: `
               <ul class="list-disc list-inside space-y-1">
@@ -174,7 +174,7 @@ const faqs = ref([{
             `
     },
     {
-        id: 6,
+        id: 7,
         frage: "Wie wird die Abrechnung durchgeführt?",
         antwort: `
             <p>
@@ -196,9 +196,9 @@ const faqs = ref([{
             </p>
             `
     },
-   
+
     {
-        id: 4,
+        id: 8,
         frage: "Wie kann ich meine Stromkosten beeinflussen?",
         antwort: `
             <p>
@@ -228,9 +228,9 @@ const faqs = ref([{
             </p>
             `
     },
-   
+
     {
-        id: 5,
+        id: 9,
         frage: "Woher weiß ich, wann viel Strom in der EEG erzeugt bzw. verbraucht wird?",
         antwort: `
             <p>
@@ -245,7 +245,7 @@ const faqs = ref([{
             `
     },
     {
-        id: 7,
+        id: 10,
         frage: "Habe ich Verpflichtungen als Mitglied?",
         antwort: `
             <p>Nein – es bestehen <strong>keine Verpflichtungen</strong>.</p>
@@ -253,7 +253,7 @@ const faqs = ref([{
             `
     },
     {
-        id: 8,
+        id: 11,
         frage: "Kann ich bei mehreren EEGs Mitglied sein?",
         antwort: `
             <p>
@@ -265,23 +265,30 @@ const faqs = ref([{
             `
     },
     {
-        id: 9,
+        id: 12,
         frage: "Welche Kosten fallen an?",
         antwort: `
             <p>
             Es wird ein <strong>Einschreibungsgebuhr von € 10.00</strong> eingehoben.
             </p>
-            <p>
-            Dieser deckt laufende Kosten wie Plattform, Abrechnung und Kontoführung.
-            </p>
-            <p>
+          
             Alle Einnahmen und Ausgaben werden transparent dargestellt.
             Überschüsse werden an die Mitglieder ausbezahlt.
             </p>
             `
     },
     {
-        id: 10,
+        id: 13,
+        frage: "Wie finanziert sich die EEG?",
+        antwort: `Der Verwaltungsaufwand (z.B. Rechnungserstellung, Kontoführung, Internetauftritt) wird aus der Differenz zwischen Einspeisevergütung und Abnahmevergütung finanziert. Der Verein verfolgt keine kommerziellen Zwecke und der Vorstand arbeitet ehrenamtlich. `
+    },
+    {
+        id: 14,
+        frage: "Muss ich einen Vertrag mit einem regulären Stromanbieter / Stromabnehmer haben??",
+        antwort: ` Ja. Jedes Mitglied muss einen Vertrag mit einem Stromanbieter bzw. Stromabnehmer haben (zB Energie AG, Verbund, …). Dieser Vertrag bleibt beim Beitritt zur EEG unverändert bestehen. Solltest du aus der EEG austreten, wird ab diesem Zeitpunkt der komplette Strom wieder von deinem regulären Stromanbieter verrechnet`
+    },
+    {
+        id: 15,
         frage: "Was ändert eine Mitgliedschaft bei den bestehenden Verträgen mit meinem Stromanbieter?",
         antwort: `
             <p>
@@ -294,7 +301,28 @@ const faqs = ref([{
             </p> `
     },
     {
-        id: 11,
+        id: 16,
+        frage: "Aktuell erhalte ich eine Jahresabrechnung von meinem Anbieter. Gibt es diesbezüglich Änderungen?",
+        antwort: `Nein, an der Abrechnung von deinem Anbieter ändert sich nichts – außer, dass die Strommenge um den Anteil der EEG geringer sein wird. In Zukunft erhältst du zusätzlich zur Abrechnung von deinem Anbieter pro Monat eine Rechnung bzw. Gutschrift von der EEG Taufkirchen/Nord. Diese enthält die Details zu deinem Stromverbrauch, deiner Stromproduktion (falls du eine PV-Anlage hast) und die daraus resultierenden Kosten oder Gutschriften. `
+    },
+    {
+        id: 17,
+        frage: "Wird meine gesamte Überschussenergie von der EEG abgenommen?",
+        antwort: `Wenn im betroffenen Zeitraum zuviel Energie innerhalb der EEG zur Verfügung steht, wird der Überschuss  an den regulären (primären) Stromanbieter bzw. Energieabnehmer des <strong>jeweiligen Einspeisers </strong>verkauft.
+           `
+    },
+    {
+        id: 18,
+        frage: "Was passiert, wenn ich mehr Strom verbrauche als die EEG bereitstellen kann?",
+        antwort: `Wenn du mehr Strom verbrauchst, als die EEG bereitstellen kann, wird die fehlende Menge automatisch von deinem regulären Stromanbieter bereitgestellt. Es gibt keine Unterbrechung in der Stromversorgung, da die EEG nahtlos mit deinem bestehenden Vertrag zusammenarbeitet. Du musst dich um nichts kümmern – die Abrechnung erfolgt automatisch über die EEG und deinen regulären Anbieter.`
+    },
+    {
+        id: 19,
+        frage: "Wieviele Prozent meines Stromverbrauchs kann realistisch von der EEG gedeckt werden?",
+        antwort: `Eine pauschale Aussage ist nicht möglich und hängt von der Anzahl von Einspeiser und Verbraucher sowie deren Stromprofil ab. Des Weiteren wirken sich unterschiedliche Jahreszeiten als auch das diesbezüglich Wetter maßgeblich auf die Deckung durch die EEG aus`
+    },
+    {
+        id: 20,
         frage: "Ich habe keine PV-Anlage. Wäre die EEG Taufkirchen/Nord auch etwas für mich?",
         antwort: `
             <p>
@@ -306,7 +334,7 @@ const faqs = ref([{
             </p> `
     },
     {
-        id: 12,
+        id: 21,
         frage: "Was wäre ideal?",
         antwort: `
             <p>
