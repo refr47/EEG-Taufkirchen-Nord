@@ -17,6 +17,7 @@ const routes = [
     { path: '/verein', name: 'Verein', component: () => import('../views/VereinView.vue') },
     { path: '/kontakt', name: 'Kontakt', component: () => import('../views/KontaktView.vue') },
     { path: '/energie', name: 'Energie', component: () => import('../views/aktuelleEnergie.vue') },
+    { path: '/datenschutz', name: 'Datenschutz', component: () => import('../views/DatenschutzView.vue') },
 ];
 
 const router = createRouter({

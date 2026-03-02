@@ -39,6 +39,9 @@
                                     <li>
                                         <router-link to="/kontakt" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Kontakt</router-link>
                                     </li>
+                                     <li>
+                                        <router-link to="/datenschutz" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Datenschutz</router-link>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -47,7 +50,7 @@
                     <div class="flex items-center space-x-16">
                         <div class="hidden lg:block text-right">
                             <p class="text-[10px] uppercase font-bold text-slate-400 leading-none">Mitglieder</p>
-                            <p class="text-xl font-black text-eeg-green">1</p>
+                            <p class="text-xl font-black text-eeg-green">{{ pricing.organisation.anzahlMitglieder }}</p>
                         </div>
     
                         <button @click="showMap = !showMap" class="hidden md:block bg-eeg-green text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-green-700 shadow-sm transition-all">
@@ -96,6 +99,9 @@
                         </li>
                         <li>
                             <router-link to="/kontakt" @click="closeMenu" class="block w-full">Kontakt</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/datenschutz" @click="closeMenu" class="block w-full">Datenschutz</router-link>
                         </li>
     
                         <hr class="border-gray-100" />
@@ -147,6 +153,7 @@ import {
 } from 'vue-router';
 import MapModal from './components/MapModal.vue';
 import trafoPath from '@/assets/trafo5002.png';
+import { pricing } from '@/siteConfig';
 //import { pricing } from '@/siteConfig';
 //import bgImage from '@/assets/trafo/trafo.png';
 
