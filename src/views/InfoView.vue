@@ -278,7 +278,7 @@ const faqs = ref([{
             `
     },
     {
-        id: 13,
+        id: 13, 
         frage: "Wie finanziert sich die EEG?",
         antwort: `Der Verwaltungsaufwand (z.B. Rechnungserstellung, Kontoführung, Internetauftritt) wird aus der Differenz zwischen Einspeisevergütung und Abnahmevergütung finanziert. Der Verein verfolgt keine kommerziellen Zwecke und der Vorstand arbeitet ehrenamtlich. `
     },
@@ -335,6 +335,23 @@ const faqs = ref([{
     },
     {
         id: 21,
+        frage: "Kann ich die EEG problemlos kündigen, wenn ich z.B. umziehe?",
+        antwort: `
+            <p>
+         Du kannst die Mitgliedschaft in der EEG jederzeit per Monatsende kündigen, z.B. bei einem Umzug. Es gibt keine Mindestvertragslaufzeit oder Kündigungsfristen. Nach der Kündigung wird dein Strom vollständig von deinem regulären Anbieter bezogen und du erhältst keine Rechnungen mehr von der EEG. Alle bestehenden Verträge mit deinem Stromanbieter bleiben unverändert bestehen.
+            </p>
+            <br>
+            <p>
+               Einfach <a href="/downloads/eegWiderruf.pdf" 
+             download="eegWiderruf.pdf" 
+             target="_blank" class="inline-flex items-center px-3 py-1 bg-eeg-green text-white rounded-lg hover:bg-green-700 transition-colors shadow-sm no-underline font-medium">
+             Widerruf herunterladen
+          </a> und per E-Mail oder postalisch an die <i>EEG Taufkirchen/Nord</i> senden.
+                </p>
+            `
+    },
+    {
+        id: 22,
         frage: "Was wäre ideal?",
         antwort: `
             <p>

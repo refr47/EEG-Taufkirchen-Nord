@@ -107,7 +107,8 @@ const getGesamt = () => {
     return formatIt(gesamt*1.2);
 };
 const getGesamtEEG = () => {
-    const gesamt = Number(pricing.bezug.netto) + Number(pricing.energie.aufgabenSteuernEEG) + Number(pricing.energie.netzentgelt * pricing.energie.netzgebuehren);
-    return formatIt(gesamt*1.2);
+    const gesamt = Number(pricing.bezug.netto) + Number(((1-pricing.energie.netzentgelt) * pricing.energie.netzgebuehren))*1.2;
+    console.log(gesamt);
+    return formatIt(gesamt);
 };
 </script>

@@ -37,7 +37,7 @@
                                         <router-link to="/verein" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Verein</router-link>
                                     </li>
                                     <li>
-                                        <router-link to="/kontakt" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Kontakt</router-link>
+                                        <router-link to="/kontakt" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Impressum</router-link>
                                     </li>
                                      <li>
                                         <router-link to="/datenschutz" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Datenschutz</router-link>
@@ -53,9 +53,9 @@
                             <p class="text-xl font-black text-eeg-green">{{ pricing.organisation.anzahlMitglieder }}</p>
                         </div>
     
-                        <button @click="showMap = !showMap" class="hidden md:block bg-eeg-green text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-green-700 shadow-sm transition-all">
+                        <!-- <button @click="showMap = !showMap" class="hidden md:block bg-eeg-green text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-green-700 shadow-sm transition-all">
                                             {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet' }}
-                                        </button>
+                                        </button> -->
                         <MapModal :isOpen="showMap" :imageSrc="trafoPath" title="Alle grün eingefärbten Objekte!!" @close="showMap = false" />
     
                         <button @click="toggleMenu" class="md:hidden p-2 text-slate-800 text-2xl">
@@ -98,7 +98,7 @@
                             <router-link to="/verein" @click="closeMenu" class="block w-full">Verein</router-link>
                         </li>
                         <li>
-                            <router-link to="/kontakt" @click="closeMenu" class="block w-full">Kontakt</router-link>
+                            <router-link to="/kontakt" @click="closeMenu" class="block w-full">Impressum</router-link>
                         </li>
                         <li>
                             <router-link to="/datenschutz" @click="closeMenu" class="block w-full">Datenschutz</router-link>
@@ -138,6 +138,23 @@
             <!-- <p class="bg-red-500 text-white">AB HIER BEGINNT DIE ROUTER-VIEW</p> -->
             <router-view></router-view>
         </main>
+       <footer class="bg-slate-800 text-white py-8 mt-12">
+    <div class="container mx-auto px-4 text-center">
+        <!-- Haupt-Copyright -->
+        <div class="text-sm mb-3">
+            &copy; {{ new Date().getFullYear() }} EEG Taufkirchen/Nord. Alle Rechte vorbehalten.
+        </div>
+
+        <!-- EU-Slogan -->
+        <div class="flex items-center justify-center space-x-1.5 text-xs text-slate-400">
+            <span>Entwickelt & mit</span>
+            <svg class="h-4 w-4 text-red-500 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001z" />
+            </svg>
+            <span>im EU-Raum gehostet</span>
+        </div>
+    </div>
+</footer>
     
     </div>
 </template>

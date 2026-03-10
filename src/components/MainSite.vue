@@ -24,7 +24,7 @@
     
                 <p class="leading-relaxed text-slate-700">
     
-                    Das Einzugsgebiet erstreckt sich rund um den Trafo 5002, der neben der Berndoblersrtraße - Höhe ISG Bauten - steht. Das heißt Erzeuger bzw. Verbraucher, die mit diesem Trafo verbunden sind, können bei der EEG Taufkirchen/Nord Mitglied werden.
+                    Das Einzugsgebiet erstreckt sich rund um den Trafo 5002, der neben der Berndoblersrtraße - Höhe ISG Bauten - steht. Das heißt Erzeuger bzw. Verbraucher, die mit diesem Trafo verbunden sind, können bei der <i>EEG Taufkirchen/Nord</i> Mitglied werden.
                 </p>
     
     

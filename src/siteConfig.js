@@ -27,7 +27,7 @@ export const pricing = {
         name: 'EEG Taufkirchen/Nord',
         website: 'https://www.eeg-taufkirchen-nord.at/',
         email: 'office@eeg-taufkirchen-nord.at',
-        adresse: 'Flieherstrasse 13, 4775 Taufkirchen/Prame',
+        adresse: 'Flieherstrasse 13, 4775 Taufkirchen/Pram',
         anzahlMitglieder: 2,
         anzahlEinspeiser: 5,
         anzahlVerbraucher: 20,
@@ -37,6 +37,11 @@ export const pricing = {
         lastUpdate: '2026-03',
         author: 'Franz Reitinger',
         datenschutzStand: '03/2026',
+        iban:"AT87 3445 5000 0674 3553",
+        konto: "EEG Taufkirchen/No",
+        bank: "Raiffeisenbank Region Schärding, Bankstelle Taufkirchen/Pram",
+        software: "EEG Faktura",
+        softwareLink: "https://vfeeg.org/",
        // kWh pro Jahr 
     },
     background: {

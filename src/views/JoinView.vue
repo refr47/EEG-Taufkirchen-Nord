@@ -81,7 +81,7 @@
                                 <h4 class="margin-0 text-slate-900 font-semibold">Beitrittserklärung PDF</h4>
                                 <p class="text-sm text-slate-500 m-0">Bitte ausfüllen und unterschrieben retournieren.</p>
                             </div>
-                            <a :href="`${publicPath}downloads/EEG-Beitrittserkl.pdf`" download="EEG-Beitrittserkl.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-eeg-green text-white rounded-lg hover:bg-green-700 transition-colors shadow-sm no-underline font-medium">
+                            <a :href="`/downloads/eegBeitritt.pdf`" download="eegBeitritt.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-eeg-green text-white rounded-lg hover:bg-green-700 transition-colors shadow-sm no-underline font-medium">
                 Datei herunterladen
             </a>
                         </div>
@@ -183,7 +183,7 @@
                                 <span class="p-1 bg-eeg-green/10 rounded">2</span> Die Zählernummer
                             </h3>
                             <p>Die Zählernummer ist eine <strong>9-stellige Nummer</strong> und kann vom Smart Meter abgelesen werden. Häufig wird diese als <span class="italic text-gray-600">INV.NR</span> gekennzeichnet.</p>
-                            <!-- Bildgröße begrenzt auf max. 400px (max-w-sm) -->
+                            <!-- Bildgröße begrenzt auf max. 400px (max-w-sm) -->${publicPath}
                             <div class="flex flex-wrap gap-4 mt-4">
                                 <!-- Erstes Bild (Großansicht/Kontext) -->
                                 <div class="w-48 overflow-hidden rounded-lg border border-gray-200 shadow-sm">
@@ -215,6 +215,7 @@ import registerErkl from '../assets/netzOE/netzOEReg1.png'
 import zaehlpunkt from '../assets/netzOE/zaehlpunkt.png'
 import zaehlernummer from '../assets/netzOE/zaehlerNummer.jpg'
 import zaehlernummerGross from '../assets/netzOE/zaehlerNummerGross.jpg'
+//const publicPath = import.meta.env.BASE_URL;
 
 const activeStep = ref(null);
 const isOpen = ref(false);

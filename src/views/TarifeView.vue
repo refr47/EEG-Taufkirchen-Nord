@@ -58,35 +58,35 @@
     
                         <div class="group relative bg-white rounded-[2rem] overflow-hidden shadow-md transition-all hover:shadow-2xl border border-slate-100 flex flex-col">
                             <div class="bg-blue-600 p-6 text-center">
-                                <span class="text-white font-black uppercase tracking-widest text-sm">Einspeisetarif</span> /div>
+                                <span class="text-white font-black uppercase tracking-widest text-sm">Einspeisetarif</span>
+                            </div>
+                            <div class="p-8 md:p-10 flex-grow">
+                                <h3 class="text-2xl font-black text-slate-800 mb-4 uppercase">Regional liefern</h3>
+                                <p class="text-slate-500 text-base mb-8">Verkaufe deinen überschüssigen Strom fair innerhalb der EEG.</p>
     
-                                <div class="p-8 md:p-10 flex-grow">
-                                    <h3 class="text-2xl font-black text-slate-800 mb-4 uppercase">Regional liefern</h3>
-                                    <p class="text-slate-500 text-base mb-8">Verkaufe deinen überschüssigen Strom fair innerhalb der EEG.</p>
-    
-                                    <div class="flex items-baseline mb-8">
-                                        <span class="text-5xl font-black text-slate-800 tracking-tighter">{{ pricing.einspeisung.netto }}</span>
-                                        <div class="ml-3">
-                   import { pricing } from '@/siteConfig';                         <span class="block text-xl font-black text-slate-400">ct/kWh</span>
-                                            <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Vergütung</span>
-                                        </div>
+                                <div class="flex items-baseline mb-8">
+                                    <span class="text-5xl font-black text-slate-800 tracking-tighter">{{ pricing.einspeisung.netto }}</span>
+                                    <div class="ml-3">
+                                        <span class="block text-xl font-black text-slate-400">ct/kWh</span>
+                                        <span class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Vergütung</span>
                                     </div>
-    
-                                    <ul class="space-y-4 mb-10">
-                                        <li v-for="item in featuresEinspeisung" :key="item" class="flex items-center text-md font-bold text-slate-700">
-                                            <span class="w-6 h-6 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mr-3 text-xs">✓</span> {{ item }}
-                                        </li>
-                                    </ul>
                                 </div>
     
-                                <div class="p-8 bg-slate-50 border-t border-slate-100 mb-20">
-                                    <router-link to="/kontakt" class="block w-full text-center py-4 border-2 border-slate-800 text-slate-800 rounded-xl font-black uppercase tracking-widest hover:bg-slate-800 hover:text-white transition-all">
-                                        Anlage anmelden
-                                    </router-link>
-                                </div>
+                                <ul class="space-y-4 mb-10">
+                                    <li v-for="item in featuresEinspeisung" :key="item" class="flex items-center text-md font-bold text-slate-700">
+                                        <span class="w-6 h-6 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mr-3 text-xs">✓</span> {{ item }}
+                                    </li>
+                                </ul>
                             </div>
     
+                            <div class="p-8 bg-slate-50 border-t border-slate-100 mb-20">
+                                <router-link to="/mitglied-werden" class="block w-full text-center py-4 border-2 border-slate-800 text-slate-800 rounded-xl font-black uppercase tracking-widest hover:bg-slate-800 hover:text-white transition-all">
+                                    Anlage anmelden
+                                </router-link>
+                            </div>
                         </div>
+    
+    
                     </div>
                 </div>
             </section>
@@ -111,8 +111,8 @@
                 </ul>
             </div>
             <tarifeBerechnung />
-            </div>
         </div>
+    </div>
 </template>
 
 <script setup>
