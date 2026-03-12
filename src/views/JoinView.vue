@@ -18,9 +18,9 @@
         <h2 class="text-red-600"> </h2><br>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div @click="toggleStep('portal')" :class="[
-                                                                                  'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
-                                                                                  activeStep === 'portal' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
-                                                                                ]">
+                                                                                          'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
+                                                                                          activeStep === 'portal' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
+                                                                                        ]">
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-3xl">🌐</span>
                     <span v-if="activeStep === 'portal'" class="text-eeg-green">●</span>
@@ -29,9 +29,9 @@
                 <p class="text-xs text-slate-500 mt-2">Registrierung bei Netz OÖ</p>
             </div>
             <div @click="toggleStep('beitritt')" :class="[
-                                                                                  'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
-                                                                                  activeStep === 'beitritt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
-                                                                                ]">
+                                                                                          'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
+                                                                                          activeStep === 'beitritt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
+                                                                                        ]">
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-3xl">✍️</span>
                 </div>
@@ -39,9 +39,9 @@
                 <p class="text-xs text-slate-500 mt-2">Formular & Anmeldung</p>
             </div>
             <div @click="toggleStep('zaehlpunkt')" :class="[
-                                                                                  'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
-                                                                                  activeStep === 'zaehlpunkt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
-                                                                                ]">
+                                                                                          'cursor-pointer p-6 rounded-3xl border-2 transition-all duration-300',
+                                                                                          activeStep === 'zaehlpunkt' ? 'border-eeg-green bg-green-50 shadow-md' : 'border-slate-100 bg-white hover:border-eeg-green/30'
+                                                                                        ]">
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-3xl">🔢</span>
                 </div>
@@ -82,8 +82,8 @@
                                 <p class="text-sm text-slate-500 m-0">Bitte ausfüllen und unterschrieben retournieren.</p>
                             </div>
                             <a :href="`/downloads/eegBeitritt.pdf`" download="eegBeitritt.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-eeg-green text-white rounded-lg hover:bg-green-700 transition-colors shadow-sm no-underline font-medium">
-                Datei herunterladen
-            </a>
+                        Datei herunterladen
+                    </a>
                         </div>
     
                         <h4 class="text-slate-900 font-bold mb-4">Wie geht es weiter?</h4>
@@ -161,17 +161,17 @@
                                         <h2>Beispiel Zählpunkt OeMAG</h2>
                                         <div @click="isOpen = !isOpen" class="cursor-pointer transition-all duration-300">
                                             <p :class="[
-                                                'text-justify text-gray-700 leading-relaxed',
-                                                isOpen ? '' : 'line-clamp-3'
-                                              ]">
+                                                        'text-justify text-gray-700 leading-relaxed',
+                                                        isOpen ? '' : 'line-clamp-3'
+                                                      ]">
                                                 hiermit bestätigen wir Ihnen gerne, dass ab dem Stichtag 01.01.2026 der von Ihrer Ökostromanlage (Zählpunktbezeichnung <strong>AT00300000000000000000000NNNNNNNNN)</strong> in das öffentliche Netz abgegebene
                                                 Strom von der OeMAG abgenommen wird. Die Vergütung der Einspeisemengen Ihrer Ökostromanlage kann somit ab diesem Zeitpunkt erfolgen. Ihre Daten AnlagenbetreiberIn: "NAME" Zählpunktbezeichnung: <strong>AT00300000000000000000000NNNNNNNNN</strong>                                            Vertragsnummer: FA00NNN Standort: 4775 Taufkirchen an der Pram Strasse Die Messung und Übermittlung der Einspeisemengen erfolgt ausschließlich durch den Netzbetreiber. Diese Daten werden, je nach Ihrer Vereinbarung
                                                 mit dem Netzbetreiber, vor Ort abgelesen oder digital über Ihren Smart Meter ausgelesen und an die OeMAG zur Abrechnung übermittelt.
                                             </p>
                                             <!-- Button-Indikator -->
                                             <button class="mt-2 text-sm font-semibold text-blue-600 hover:text-blue-800">
-                                            {{ isOpen ? 'Weniger anzeigen' : 'Mehr anzeigen...' }}
-                                          </button>
+                                                    {{ isOpen ? 'Weniger anzeigen' : 'Mehr anzeigen...' }}
+                                                  </button>
                                         </div>
                                     </article>
                                 </div>
@@ -197,8 +197,8 @@
                         </section>
                     </div>
                     <button @click="activeStep = null" class="mt-6 text-slate-400 hover:text-slate-600 text-xs flex items-center">
-                                                                                    <span class="mr-1">✕</span> Details schließen
-                                                                                  </button>
+                                                                                            <span class="mr-1">✕</span> Details schließen
+                                                                                          </button>
                 </div>
             </transition>
         </div>
@@ -207,7 +207,8 @@
 
 <script setup>
 import {
-    ref
+    ref,
+    onMounted
 } from 'vue';
 import StepScreenshot from '../components/StepScreenshot.vue';
 import register from '../assets/netzOE/netzOEReg.png';
@@ -222,7 +223,12 @@ const isOpen = ref(false);
 const toggleStep = (step) => {
     // Wenn der gleiche Step nochmal geklickt wird, schließe ihn (null)
     activeStep.value = activeStep.value === step ? null : step;
+
+
 };
+onMounted(() => {
+    console.log('KontaktView wurde erfolgreich gemountet!')
+})
 </script>
 
 
