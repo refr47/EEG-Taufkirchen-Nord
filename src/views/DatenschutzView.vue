@@ -6,7 +6,7 @@
         <p class="mt-4 text-slate-500 font-medium italic">Stand: {{ pricing.organisation.datenschutzStand }} • {{ pricing.organisation.name }}</p>
     
         <div class="max-w-4xl mx-auto px-6">
-            <nav class="mb-16 p-8 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm">
+          <!--   <nav class="mb-16 p-8 bg-slate-50 rounded-3xl border border-slate-200 shadow-sm">
                 <h2 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">Schnellzugriff</h2>
                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3">
                     <li v-for="(item, index) in menuItems" :key="index">
@@ -16,18 +16,18 @@
                 </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
     
-            <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-16">
+            <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-16 overflow-wrap: break-word">
     
                 <section id="einleitung" class="scroll-mt-24">
                     <p>
                         Wir freuen uns über Ihren Besuch auf unserer Webseite. Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Wir halten uns an die gesetzlichen Bestimmungen der EU-Datenschutz-Grundverordnung, des österreichischen Datenschutzgesetzes
-                        und der sonstigen anwendbaren Rechtsvorschriften zum Schutz, dem rechtmäßigen Umgang und zur Geheimhaltung von personenbezogenen Daten. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der geltenden gesetzlichen Bestimmungen.
+                        und der sonstigen anwendbaren Rechtsvorschriften zum Schutz, dem rechtmäßigen Umgang und zur Geheimhaltung von personenbezogenen Daten. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der geltenden gesetzlichen Bestimmungen. <br> 
                     </p>
                     <p>
-                        Diese Datenschutzerklärung bezieht sich auf alle von uns im Unternehmen verarbeiteten personenbezogenen Daten sowie auf alle Daten, die von uns beauftragte Firmen (Auftragsverarbeiter) verarbeiten. Personenbezogene Daten umfassen gemäß Art. 4 Nr. 1 DSGVO
-                        Informationen wie Name, E-Mail-Adresse oder die postalische Anschrift einer Person. Die Verarbeitung dieser Daten ermöglicht es uns, unsere Dienstleistungen und Produkte sowohl online als auch offline bereitzustellen und abzurechnen.
+                        Diese Datenschutzerklärung bezieht sich auf alle von uns verarbeiteten personenbezogenen Daten sowie auf alle Daten, die von uns beauftragte Firmen (Auftragsverarbeiter) verarbeiten. Personenbezogene Daten umfassen gemäß Art. 4 Nr. 1 DSGVO
+                        Informationen wie Name, E-Mail-Adresse oder die postalische Anschrift einer Person. Die Verarbeitung dieser Daten ermöglicht es uns, unsere Dienstleistungen  sowohl online als auch offline bereitzustellen und abzurechnen.
                     </p>
                     <div class="mt-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
                         <p class="font-bold mb-2">Der Geltungsbereich dieser Datenschutzerklärung umfasst:</p>
@@ -36,7 +36,7 @@
                             <li>die E-Mail-Kommunikation</li>
                         </ul>
                         <p class="mt-4 text-sm">
-                            Die Datenschutzerklärung gilt für alle Bereiche, in denen personenbezogene Daten innerhalb unseres Unternehmens über die genannten Kanäle systematisch verarbeitet werden. Sollten wir außerhalb dieser Kanäle mit Ihnen in Rechtsbeziehungen treten, werden
+                            Die Datenschutzerklärung gilt für alle Bereiche, in denen personenbezogene Daten  über die genannten Kanäle systematisch verarbeitet werden. Sollten wir außerhalb dieser Kanäle mit Ihnen in Rechtsbeziehungen treten, werden
                             wir Sie gegebenenfalls gesondert über die Datenverarbeitung informieren.
                         </p>
                     </div>
@@ -162,13 +162,14 @@
 </template>
 
 <script setup>
-import { pricing, onMounted } from '@/siteConfig';
+import { pricing/* , onMounted,ref */ } from '@/siteConfig';
 
+/* const el = ref()
 
 onMounted(() => {
-    console.log('DatenschutzView wurde erfolgreich gemountet!')
-})
-const menuItems = [
+  el.value // <div>
+}) */
+/* const menuItems = [
     { id: 'einleitung', title: 'Einleitung & Geltungsbereich' },
     { id: 'kontakt', title: 'Verantwortliche & Kontakt' },
     { id: 'zwecke', title: 'Zwecke der Verarbeitung' },
@@ -180,7 +181,7 @@ const menuItems = [
     { id: 'cookies', title: 'Cookies & Web-Analyse' },
     { id: 'schluss', title: 'Änderungsvorbehalt' }
 ];
-
+ */
 const rechtsgrundlagen = [
     { titel: 'Einwilligung', art: 'Art. 6 Abs. 1 lit. a DSGVO', beschreibung: 'Wenn Sie uns Ihre Zustimmung zur Verarbeitung für einen klar definierten Zweck erteilen – etwa via Kontaktformular.' },
     { titel: 'Vertragserfüllung', art: 'Art. 6 Abs. 1 lit. b DSGVO', beschreibung: 'Ihre Daten werden verarbeitet, sofern dies zur Erfüllung eines Vertrags oder zur Durchführung vorvertraglicher Schritte notwendig ist.' },

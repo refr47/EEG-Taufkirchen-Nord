@@ -269,7 +269,7 @@ const faqs = ref([{
         frage: "Welche Kosten fallen an?",
         antwort: `
             <p>
-            Es wird ein <strong>Einschreibungsgebuhr von € 10.00</strong> eingehoben.
+            Es wird ein <strong>Mitgliedsbeitrag von € 5.00</strong> / Jahr eingehoben.
             </p>
           
             Alle Einnahmen und Ausgaben werden transparent dargestellt.

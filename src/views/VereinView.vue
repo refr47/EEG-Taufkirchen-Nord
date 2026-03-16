@@ -21,11 +21,20 @@
          
           <div>
             <h3 class="font-black text-slate-900 leading-none mb-1 text-lg">Karl Auinger</h3>
-            <p class="text-xs text-slate-400 uppercase font-bold tracking-widest mb-2">Obmann-Stv. & Schriftführer</p>
+            <p class="text-xs text-slate-400 uppercase font-bold tracking-widest mb-2">Obmann-Stv.</p>
+            <p class="text-sm text-slate-500 italic">Taufkirchen/Pram</p>
+          </div>
+        </div>
+         <div class="bg-transparent p-6 rounded-2xl shadow-sm border border-slate-100 flex items-start space-x-4">
+         
+          <div>
+            <h3 class="font-black text-slate-900 leading-none mb-1 text-lg">Andreas Winklhamer</h3>
+            <p class="text-xs text-slate-400 uppercase font-bold tracking-widest mb-2"> Schriftführer</p>
             <p class="text-sm text-slate-500 italic">Taufkirchen/Pram</p>
           </div>
         </div>
       </div>
+
     </section>
 
     <section class="bg-transparent text-black p-4 md:p-2 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
