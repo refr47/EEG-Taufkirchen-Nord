@@ -1,7 +1,7 @@
 
 <template>
     <transition name="fade">
-        <div v-if="isOpen" class="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-12">
+        <div v-if="isOpen" class="fixed inset-0 z-[80] flex items-center justify-center p-4 md:p-12">
             <div @click="$emit('close')" class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"></div>
     
             <div class="relative z-[210] max-w-5xl w-full bg-white p-2 rounded-2xl shadow-2xl transition-transform duration-300">

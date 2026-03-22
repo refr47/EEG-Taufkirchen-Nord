@@ -30,7 +30,7 @@
                                         <router-link to="/tarif" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Tarif</router-link>
                                     </li>
                                     <!-- Dieser Punkt erscheint nur, wenn ergieingeloggt -->
-                                    <router-link v-if="isLoggedIn" to="/energie" class="font-bold text-eeg-green">
+                                    <router-link v-if="isLoggedIn" to="/energie" class="font-bold text-slate-400 hover:text-eeg-green transition-colors" active-class="text-eeg-green underline decoration-2 underline-offset-8">
                                         Energie
                                     </router-link>
                                     <li>
@@ -39,7 +39,7 @@
                                     <li>
                                         <router-link to="/kontakt" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Impressum</router-link>
                                     </li>
-                                     <li>
+                                    <li>
                                         <router-link to="/datenschutz" active-class="text-eeg-green border-b-2 border-eeg-green" class="pb-1">Datenschutz</router-link>
                                     </li>
                                 </ul>
@@ -54,23 +54,26 @@
                         </div>
     
                         <!-- <button @click="showMap = !showMap" class="hidden md:block bg-eeg-green text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-green-700 shadow-sm transition-all">
-                                            {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet' }}
-                                        </button> -->
-                        <MapModal :isOpen="showMap" :imageSrc="trafoPath" title="Alle grün eingefärbten Objekte!!" @close="showMap = false" />
+                                                                    {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet' }}
+                                                                </button> -->
+                        <MapModal :isOpen="showMap" :imageSrc="trafoPath" title="Alle grün eingefärbten Objekte!!" @close="showMap = false" />^
     
                         <button @click="toggleMenu" class="md:hidden p-2 text-slate-800 text-2xl">
-                                            {{ isMenuOpen ? '✕' : '☰' }}
-                                        </button>
+                                                                    {{ isMenuOpen ? '✕' : '☰' }}
+                                                                </button>
     
-                        <button @click="toggleLogin" :class="[
-                                'hidden md:block px-5 py-2 rounded-full text-xs font-bold shadow-sm transition-all border-2 border-eeg-green',
-                                isLoggedIn 
-                                    ? 'bg-white text-eeg-green hover:bg-slate-50' 
-                                    : 'bg-eeg-green text-white hover:bg-green-700'
-                            ]">
-                            
-                                            {{ isLoggedIn ? 'Angemeldet' : 'Anmelden' }}
-                                        </button>
+                        <button @click="isLoggedIn ? handleLogout() : showLoginModal = true" :class="[
+                      'px-6 py-2.5 rounded-full text-xs font-black shadow-md transition-all border-2 flex items-center gap-2.5',
+                      isLoggedIn 
+                        ? 'border-slate-200 bg-white text-slate-600 hover:border-red-500 hover:text-red-600 hover:bg-red-50' 
+                        : 'border-eeg-green bg-eeg-green text-white hover:bg-green-700 hover:border-green-700'
+                    ]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    {{ isLoggedIn ? 'Abmelden' : 'Anmelden' }}
+                  </button>
+    
     
     
     
@@ -113,15 +116,15 @@
                             </div>
     
                             <button @click="showMap = !showMap; closeMenu()" class="w-full bg-slate-100 text-slate-700 py-3 rounded-xl text-sm font-bold active:bg-slate-200">
-                        {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet Karte' }}
-                    </button>
+                                                {{ showMap ? 'Einzugsgebiet schließen' : 'Einzugsgebiet Karte' }}
+                                            </button>
     
                             <button @click="toggleLogin(); closeMenu()" :class="[
-                        'w-full py-3 rounded-xl text-sm font-bold transition-all shadow-sm',
-                        isLoggedIn ? 'bg-white text-eeg-green border-2 border-eeg-green' : 'bg-eeg-green text-white'
-                    ]">
-                        {{ isLoggedIn ? 'Konto Abmelden' : 'Anmelden' }}
-                    </button>
+                                                'w-full py-3 rounded-xl text-sm font-bold transition-all shadow-sm',
+                                                isLoggedIn ? 'bg-white text-eeg-green border-2 border-eeg-green' : 'bg-eeg-green text-white'
+                                            ]">
+                                                {{ isLoggedIn ? 'Konto Abmelden' : 'Anmelden' }}
+                                            </button>
                         </div>
                     </ul>
                 </nav>
@@ -136,26 +139,27 @@
     
             </div>
             <!-- <p class="bg-red-500 text-white">AB HIER BEGINNT DIE ROUTER-VIEW</p> -->
-            <router-view></router-view>
+            <router-view :isLoggedIn="isLoggedIn" @open-login="showLoginModal = true" />
         </main>
-       <footer class="bg-slate-800 text-white py-8 mt-12">
-    <div class="container mx-auto px-4 text-center">
-        <!-- Haupt-Copyright -->
-        <div class="text-sm mb-3">
-            &copy; {{ new Date().getFullYear() }} EEG Taufkirchen/Nord. Alle Rechte vorbehalten.
-        </div>
-
-        <!-- EU-Slogan -->
-        <div class="flex items-center justify-center space-x-1.5 text-xs text-slate-400">
-            <span>Entwickelt & mit</span>
-            <svg class="h-4 w-4 text-red-500 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001z" />
-            </svg>
-            <span>im EU-Raum gehostet</span>
-        </div>
-    </div>
-</footer>
     
+        <footer class="bg-slate-800 text-white py-8 mt-12">
+            <div class="container mx-auto px-4 text-center">
+                <!-- Haupt-Copyright -->
+                <div class="text-sm mb-3">
+                    &copy; {{ new Date().getFullYear() }} EEG Taufkirchen/Nord. Alle Rechte vorbehalten.
+                </div>
+    
+                <!-- EU-Slogan -->
+                <div class="flex items-center justify-center space-x-1.5 text-xs text-slate-400">
+                    <span>Entwickelt & mit</span>
+                    <svg class="h-4 w-4 text-red-500 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001z" />
+                                    </svg>
+                    <span>im EU-Raum gehostet</span>
+                </div>
+            </div>
+        </footer>
+        <LoginModal v-if="showLoginModal" @close="showLoginModal = false" @login-success="onLoginSuccess" />
     </div>
 </template>
 
@@ -166,19 +170,25 @@ import {
 
 } from 'vue';
 import {
-    useRoute
+    useRouter
 } from 'vue-router';
 import MapModal from './components/MapModal.vue';
 import trafoPath from '@/assets/trafo5002.png';
 import { pricing } from '@/siteConfig';
+import LoginModal from '@/components/LoginModal.vue';
 //import { pricing } from '@/siteConfig';
 //import bgImage from '@/assets/trafo/trafo.png';
 
 // State (Reaktive Variablen)
+const router = useRouter();
+
 let isMenuOpen = ref(false);
 let showMap = ref(false);
 // Neu: Login Status
 let isLoggedIn = ref(false);
+//const loginErfolgreich = ref(!!localStorage.getItem('user_token'));
+const showLoginModal = ref(false);
+
 
 /* onst backgroundStyle = computed(() => {
   return {
@@ -199,12 +209,36 @@ let isLoggedIn = ref(false);
 
 // Simulation eines Login-Vorgangs
 // Die Funktion, die aufgerufen werden soll
-const toggleLogin = () => {
+/* const toggleLogin = () => {
     console.log("Login Status wird geändert...");
     isLoggedIn.value = !isLoggedIn.value;
     // Hier könnte später stehen: if(isLoggedIn.value) { router.push('/dashboard') }
+}; */
+
+
+const onLoginSuccess = (/*user*/) => {
+    isLoggedIn.value = true;
+    showLoginModal.value = false;
+
+    // Automatischer Wechsel zur Energie-Seite
+    router.push('/energie');
 };
 
+
+const handleLogout = () => {
+    // 1. Login-Status zurücksetzen
+    isLoggedIn.value = false;
+
+    // 2. Token aus dem LocalStorage löschen (falls vorhanden)
+    localStorage.removeItem('user_token');
+
+    // 3. Den User auf die Startseite oder Login-Seite schicken
+    // Das verhindert, dass er auf der /energie Seite "stehenbleibt"
+    router.push('/');
+
+    // Optional: Erfolgskontrolle
+    console.log("Logout erfolgreich, Menü aktualisiert.");
+};
 // Hilfsfunktionen
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value;
@@ -215,8 +249,8 @@ const closeMenu = () => {
 };
 
 // Route-Watcher (schließt das Menü bei Navigation)
-const route = useRoute();
-watch(() => route.path, () => {
+
+watch(() => router.path, () => {
     closeMenu();
 });
 </script>
@@ -236,5 +270,18 @@ body {
 
 .border-eeg-green {
     border-color: #16a34a;
+}
+
+/* Dieser Style greift automatisch, wenn man auf der Seite /energie ist */
+
+.router-link-active {
+    @apply border-b-2 border-eeg-green text-slate-900;
+    /* Oder ein anderes Design, das wie "gedrückt" aussieht */
+}
+
+/* Optional: Der spezielle Fokus-Ring für Barrierefreiheit */
+
+.font-bold:focus {
+    @apply outline-none ring-2 ring-eeg-green ring-offset-2 rounded-sm;
 }
 </style>

@@ -112,7 +112,7 @@
                         <svg class="h-4 w-4 text-[#42b883]" viewBox="0 0 128 128">
                           <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110H78.8z"/>
                           <path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z"/>
-                        </svg>
+                         </svg>
                         <span class="text-sm font-bold text-slate-700">Vue.js</span>
                     </div>
                 </div>
