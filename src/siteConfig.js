@@ -44,11 +44,17 @@ export const pricing = {
         softwareLink: "https://vfeeg.org/",
        // kWh pro Jahr 
     },
-    background: {
+    buildBy : {
+        name: 'Franz Reitinger',
+        email: 'office@eeg-taufkirchen-nord.at',
+        versionFrontend: '1.2.0.1',
+        versionBackend: '0.5.0',
+    }
+    /* background: {
 
         saturation: 0,   // 0 bis 2 (0 = S/W)ts
         brightness: 1.05,  // 0.5 bis 1.5
         scale: 0.1,
         overlayOpacity: 'bg-white/40' // Tailwind Klasse für den Schleier
-    }
+    } */
 };

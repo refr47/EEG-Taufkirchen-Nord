@@ -116,7 +116,7 @@
                     <div class="flex flex-col items-center justify-center text-center py-6 lg:py-0 border-y lg:border-y-0 lg:border-x border-white/10">
                         <span class="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-1">Aktueller Preis</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-5xl font-black text-eeg-green">{{ energiedaten.preisCtKw }}</span>
+                            <span class="text-5xl font-black text-eeg-green">{{ pricing.energie.arbeitspreis}}</span>
                             <span class="text-sm font-bold text-slate-400">ct/kW</span>
                         </div>
                     </div>
@@ -206,6 +206,7 @@ import {
     computed,
     onMounted
 } from 'vue';
+import { pricing } from '@/siteConfig';
 import api from 'axios';
 // --- STATE & UI CONTROL ---
 const activeTab = ref('meine');
@@ -232,7 +233,7 @@ const userData = ref({
     zuletztEingeloggt: '22.03.2026 20:15'
 });
 const communityData = ref({
-    aktuellerBezug: '14.500',
+    aktuellerBezug: '14.50',
     aktuelleEinspeisung: '12.820'
 });
 const energiekonto = ref({
@@ -242,8 +243,7 @@ const energiekonto = ref({
 const energiedaten = ref({
     abrechnungsmonat: 'Februar 2026',
     consumedPowerKw: 342.50,
-    eingespeistePowerKw: 120.20,
-    preisCtKw: 14.5
+    eingespeistePowerKw: 120.2,
 });
 const historieDaten = ref({
     2026: [{
