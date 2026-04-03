@@ -9,18 +9,18 @@ export const pricing = {
     
       },  // Preis pro kWh inkl. MwSt
     bezug: {
-        netto: 9.50,
+        netto: 6.50,
         brutto: 0.1413          // Wert für Berechnungen
     },
     einspeisung: {
-       netto: 9.00,
+       netto: 6.00,
     },
     vergleich: {
         normalBrutto: 0.2580,
         ersparnisProzent: 45    // Berechneter Wert für die Anzeige
     },
     tarife: {
-        gueltigAb: '01.01.2026',
+        gueltigAb: 'März 2026',
 
     },
     organisation: {

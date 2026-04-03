@@ -28,4 +28,10 @@ npm run lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### Deploy
+```
+scp -r dist/* energie@eeg-taufkirchen-nord.at:/var/www/html
+```
+
+
 # EEG-Taufkirchen-Nord

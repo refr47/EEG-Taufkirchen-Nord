@@ -56,9 +56,9 @@
                         <h3 class="text-eeg-green">Schritt 1: Das eService-Portal</h3>
                         <p>Wenn du noch keinen Zugang beim eService-Portal hast, musst du dich bei der Netz OÖ registrieren.</p>
                         <ul class="list-disc list-inside space-y-2">
-                            <li>Besuche <a href="#">service.netzooe.at</a></li>
-                            <li>Halten Kundennummer bereit</li>
-                            <li>Wichtig: Zählpunkt (AT xxxxxxx) und Zählernummer bereit halten - siehe Zählpunkt"</li>
+                            <li>Besuche <a href="https://www.netzooe.at/" target="_blank" class="text-eeg-green hover:underline">Netz OÖ</a></li>
+                            <li>Halte Kundennummer bereit</li>
+                            <li>Wichtig: Zählpunkt (AT00 30xxxxxxx) und Zählernummer bereit halten (insgesamt 33(!) Stellen)"</li>
                         </ul>
                         <div class="p-4">
                             <h3 class="text-lg font-bold mb-4">Anleitung: Schritt für Schritt</h3>
@@ -84,6 +84,11 @@
                             <a :href="`/downloads/eegBeitritt.pdf`" download="eegBeitritt.pdf" target="_blank" class="inline-flex items-center px-6 py-3 bg-eeg-green text-white rounded-lg hover:bg-green-700 transition-colors shadow-sm no-underline font-medium">
                             Datei herunterladen
                         </a>
+                            <div class="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200 italic text-slate-700">
+                                <strong>Ausgefülllt an folgende E-Mail
+                                    Adresse senden:</strong><br>
+                                office@eeg-taufkirchen-nord.at
+                            </div>
                         </div>
     
                         <h4 class="text-slate-900 font-bold mb-4">Wie geht es weiter?</h4>
@@ -92,7 +97,7 @@
                             <!-- Schritt A -->
                             <div class="flex gap-4">
                                 <div class="flex-none w-8 h-8 bg-eeg-green text-white rounded-full flex items-center justify-center font-bold">A</div>
-                                <p class="m-0">Die Energiegemeinschaft schickt eine <strong>elektronische Anfrage</strong> an die Netz OÖ.</p>
+                                <p class="m-0">Die Energiegemeinschaft schickt dir eine <strong>Bestätigung der Anmeldung</strong> und informiert Netz OÖ über die Anmeldung zu einer EEG. </p>
                             </div>
     
                             <!-- Schritt B -->
@@ -101,7 +106,7 @@
                                 <div>
                                     <p class="font-semibold text-slate-900 m-0">Freigabe im Portal:</p>
                                     <p class="mt-1 leading-relaxed text-justify">
-                                        Sobald diese Anfrage im System ist, erscheint diese im <strong>Netz OÖ eService-Portal</strong> unter dem Menüpunkt „Datenfreigaben“. Dort mußt du aktiv auf den blauen Haken oder „Bestätigen“ klicken.
+                                        Sobald diese Anfrage im System von Netz OÖ eingegangen ist - dies kann einige Tage dauern -  erscheint diese im <strong>Netz OÖ eService-Portal</strong> unter dem Menüpunkt „Datenfreigaben“. Dort mußt du aktiv auf den blauen Haken oder „Bestätigen“ klicken.
                                     </p>
     
                                     <!-- Wichtiger Hinweis innerhalb von Schritt B -->
@@ -111,11 +116,12 @@
                                 </div>
                             </div>
                         </div>
-    
-                        <!-- Zusammenfassung -->
                         <div class="mt-8 p-4 bg-slate-100 rounded-lg border border-slate-200 italic text-slate-700">
-                            <strong>Zusammengefasst:</strong> Du mußt nicht selbst aktiv „melden“. Die EEG stellt die Anfrage, welche Du lediglich im Portal der Netz OÖ bestätigen mußt.
+                            <strong>Zusammengefasst:</strong> Du mußt nicht selbst aktiv „melden“. Die EEG stellt die
+                            Anfrage, welche Du lediglich im Portal der Netz OÖ bestätigen mußt.
                         </div>
+                      
+                        
                     </div>
                     <div v-if="activeStep === 'zaehlpunkt'" class="prose prose-slate max-w-none">
                         <div class="border-l-4 border-blue-500 bg-blue-50 rounded-r-lg p-4 mb-6 shadow-sm">

@@ -10,11 +10,11 @@
     
     
                     <p class="text-base font-bold text-slate-700 max-w-xl mx-auto leading-relaxed">
-                        Durch die Selbstbestimmung innerhalb der EEG Taufkirchen/Nord wird der Tarif monatlich angepasst und orientiert sich an den Preisvorgaben der OeMAG.
+                        Durch die Selbstbestimmung innerhalb der EEG Taufkirchen/Nord wird der Tarif monatlich angepasst und orientiert sich an den Preisvorgaben der OeMAG für das <i>abgelaufene</i> Monat. 
                     </p>
                 </div>
-                <p class="text-center text-base font-bold text-slate-400 mt-4">
-                    Gültig ab: {{ pricing.tarife.gueltigAb }}
+                <p class="text-center text-base font-bold text-slate-1700 text-4xl mt-4">
+                    Gültig für Abrechnungsmonat: {{ pricing.tarife.gueltigAb }}
                 </p>
             </section>
     

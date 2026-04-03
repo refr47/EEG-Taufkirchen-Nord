@@ -5,7 +5,7 @@
                 <h3 class="text-3xl md:text-4xl font-black text-slate-800 leading-tight   mt-4 border-l-8 border-eeg-green pl-6">
                     Dashboard
                 </h3>
-                <p class="text-slate-500 text-sm italic mt-1 ml-1">Zuletzt angemeldet: {{ userData.zuletztEingeloggt }}</p>
+                <p class="text-slate-500 text-sm italic mt-1 ml-1">Zuletzt angemeldet: {{ userData.lastLogin }}</p>
             </div>
             <div class="flex items-center space-x-2 bg-eeg-green/5 px-4 py-2 rounded-xl border border-eeg-green/20">
                 <span class="text-[10px] uppercase font-black text-eeg-green leading-none">Login-ID:</span>
@@ -215,7 +215,7 @@ const error = ref(null);
 const gewaehltesJahr = ref(2026);
 const gewaehltesJahrEEG = ref(2026);
 const verfuegbareJahre = [2026, 2025, 2024];
-// --- DATEN-OBJEKTE (Initial mit deinen Werten befüllt) ---
+// --- DATEN-OBJEKTE (Initial mit deinen Werten befüllut) ---
 const person = ref({
     firstName: 'Max',
     lastName: 'Mayer',
@@ -229,8 +229,8 @@ const person = ref({
     accountNumber: '1234567'
 });
 const userData = ref({
-    email: 'max@mayer.at',
-    zuletztEingeloggt: '22.03.2026 20:15'
+    email: 'max@mayer.at',  
+    lastLogin: '22.03.2026 20:15'
 });
 const communityData = ref({
     aktuellerBezug: '14.50',
@@ -285,10 +285,10 @@ const fetchDashboardData = async () => {
         const response = await api.get('/dashboard-summary');
         // Daten zuweisen (falls API-Struktur von Initialdaten abweicht, hier mappen)
         if (response.data) {
-            person.value = response.data.person;
+           /*  person.value = response.data.person;
             userData.value = response.data.userData;
             historieDaten.value = response.data.historieDaten;
-            historieEEG.value = response.data.historieEEG;
+            historieEEG.value = response.data.historieEEG; */
             // ... weitere Zuweisungen
         }
     } catch (err) {
